@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Lesson 2. HTML/CSS Course</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+            --color-key: #b20600;
+        }
+    </style>
+</head>
+<body class="shower list grid">
+    <header class="caption">
+        <h1>Лекция 2</h1>
+    </header>
+
+    <section class="slide">
+        <h2 class="shout">Лекция 2</h2>
+    </section>
+
+<!--    <section class="slide">-->
+<!--        <h2>Reset, normalize</h2>-->
+<!--        <p>Нужны для сброса браузерных стилей до общего состояния.</p>-->
+<!--        <p>-->
+<!--            <mark class="important">Reset</mark> - это не конкретный файл, а набор правил.-->
+<!--            Можно составить самому или взять из open source.-->
+<!--            Подход предложил Эрик Мейер - его <a href="https://meyerweb.com/eric/tools/css/reset/">reset.css</a>.-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <mark class="important">Normalize</mark> - современная альтернатива.-->
+<!--            Подход предложил Николас Галлахер.-->
+<!--            Нормализовать стили — значит убрать различия отображения в разных браузерах,-->
+<!--            а не "обнулить" до отправной точки как в случае с reset.css.-->
+<!--            Живет <a href="https://github.com/necolas/normalize.css/">тут</a>.-->
+<!--        </p>-->
+<!--    </section>-->
+
+    <section class="slide">
+        <h2 class="shout">Способы организации раскладки</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Раскладка на инлайн-блоках</h2>
+        <div class="columns two">
+            <div>
+                <span style="color: green; font-size: 3em;">+</span>
+                <ul>
+                    <li>реагируют на выравнивание<br/>(text-align и vertical-align)</li>
+                    <li>можно задавать размеры</li>
+                    <li>переносятся</li>
+                </ul>
+            </div>
+            <div>
+                <span style="color: red; font-size: 3em;">-</span>
+                <ul>
+                    <li>лишние пробелы</li>
+                    <li>много оберток, чтобы добиться отступов</li>
+                    <li>нельзя "растянуть" элементы по высоте</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Flex</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p><mark>Flex</mark> - flexible box — «гибкий блок»</p>
+
+        <pre>
+            <code><span>// <a target="_blank" href="https://www.w3.org/TR/css-flexbox-1/">MDN</a></span></code>
+            <code><span class="rule">.container</span> <span class="punctuation">{</span></code>
+            <code><span class="property">    display: flex;</span></code>
+            <code><span class="punctuation">}</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <img width="100%" src="./pictures/flex_caniuse.png">
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Flex-элементы располагаются вдоль <mark>главной оси</mark> (<mark>main axis</mark>).</p>
+        <img class="image image_full_width" src="./pictures/arrow_right.png" />
+        <br/>
+        <p class="next">Свойство <span class="property">flex-direction</span> меняет её направление.</p>
+    </section>
+
+    <style>
+        .flex-ex {
+            display: flex;
+            gap: 1rem;
+            background: var(--color-dark);
+            padding: 10px;
+            border-radius: 5px;
+            min-height: 60px;
+        }
+
+        .flex-ex__el {
+            background: var(--color-yellow);
+            font-size: 14px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .flex-ex__el[class] {
+            margin-bottom: 0;
+        }
+    </style>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">flex-direction: row;</span><span> // По-умолчанию</span></span>
+        <br/>
+        <img class="image image_full_width" src="./pictures/arrow_right.png" />
+        <br/>
+        <div class="flex-ex">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">flex-direction: row-reverse;</span><span></span></span>
+        <br/>
+        <img class="image image_full_width" style="transform: scaleX(-1);" src="./pictures/arrow_right.png" />
+        <br/>
+        <div class="flex-ex" style="flex-direction: row-reverse;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">flex-direction: column;</span><span></span></span>
+        <br/>
+        <div class="columns two">
+            <div style="text-align: right;">
+                <img class="image" height="200px" src="./pictures/arrow_down.png" />
+            </div>
+            <div>
+                <div class="flex-ex" style="flex-direction: column;">
+                    <p class="flex-ex__el">
+                        если вселенная
+                    </p>
+                    <p class="flex-ex__el">
+                        бесконечна действительно,
+                    </p>
+                    <p class="flex-ex__el">
+                        значит есть куча
+                    </p>
+                    <p class="flex-ex__el">
+                        копий нашей планеты
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">flex-direction: column-reverse;</span><span></span></span>
+        <br/>
+        <div class="columns two">
+            <div style="text-align: right;">
+                <img class="image" height="200px" style="transform: scaleY(-1);" src="./pictures/arrow_down.png" />
+            </div>
+            <div>
+                <div class="flex-ex" style="flex-direction: column-reverse;">
+                    <p class="flex-ex__el">
+                        если вселенная
+                    </p>
+                    <p class="flex-ex__el">
+                        бесконечна действительно,
+                    </p>
+                    <p class="flex-ex__el">
+                        значит есть куча
+                    </p>
+                    <p class="flex-ex__el">
+                        копий нашей планеты
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Свойство <span class="property">justify-content</span> управляет выравниванием флекс-элементов вдоль главной оси.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">justify-content: flex-start;</span><span> // По-умолчанию</span></span>
+        <br/>
+        <br/>
+        <div class="flex-ex">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">justify-content: flex-end;</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="justify-content: flex-end;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">justify-content: center;</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="justify-content: center;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">justify-content: space-between;</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="justify-content: space-between;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">justify-content: space-around;</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="justify-content: space-around;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Поперечная ось всегда перпендикулярна главной оси.</p>
+        <img class="image image_full_width" src="./pictures/arrow_right_2.png">
+        <br/>
+        <p>Направление изменить нельзя.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <div class="columns two">
+            <div>
+                <img class="image" width="250px" style="object-fit: contain;" src="./pictures/direction_row.png">
+                <br/>
+                <img class="image" width="250px" style="object-fit: contain;" src="./pictures/direction_row_reverse.png">
+            </div>
+            <div>
+                <img class="image" width="250px" style="object-fit: contain;" src="./pictures/direction_column.png">
+                <br/>
+                <img class="image" width="250px" style="object-fit: contain;" src="./pictures/direction_column_reverse.png">
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Свойство <span class="property">align-items</span> управляет выравниванием флекс-элементов вдоль поперечной оси.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">align-items: stretch;</span> // По-умолчанию</span>
+        <br/>
+        <br/>
+        <div class="flex-ex">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">align-items: flex-start;</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="align-items: flex-start;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">align-items: flex-end;</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="align-items: flex-end;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">align-items: center;</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="align-items: center;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el" style="height: 50px;">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">align-items: baseline;</span> // по первой строке текста</span>
+        <br/>
+        <br/>
+        <div class="flex-ex" style="align-items: baseline;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el" style="height: 50px;">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p><span class="property">align-self</span> даёт переопределить выравнивание у флекс-элемента.</p>
+        <p>Значения те же, что и у <span class="property">align-items</span>.</p>
+    </section>
+
+    <script>
+        document.addEventListener('change', (event) => {
+            const select = event.target;
+            if (!select.classList.contains('js-onselect')) {
+                return;
+            }
+            const value = select.value;
+            const property = select.getAttribute('data-property');
+            const applyTo = select.getAttribute('data-apply');
+            const slide = select.closest('.slide');
+            const applyToElems = slide.querySelectorAll(applyTo);
+            applyToElems.forEach((el) => {
+                el.style[property] = value;
+            });
+        });
+    </script>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">align-self:
+            <select class="js-onselect" data-apply=".js-align-apply" data-property="align-self">
+                <option value="stretch" selected>stretch</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="baseline">baseline</option>
+            </select>
+        </span>
+        <br/>
+        <br/>
+        <div class="flex-ex">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el js-align-apply">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+    
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Что, если flex-элементов много?</p>
+        <br/>
+        <br/>
+        <div class="flex-ex">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+        </div>
+    </section>
+    
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Будут сжиматься до предела</p>
+        <br/>
+        <br/>
+        <div class="flex-ex">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+            <p class="flex-ex__el">
+                где-то сейчас происходят
+            </p>
+            <p class="flex-ex__el">
+                те же события
+            </p>
+            <p class="flex-ex__el">
+                копия меня пишет
+            </p>
+            <p class="flex-ex__el">
+                копию песни этой
+            </p>
+            <p class="flex-ex__el">
+                если вселенная бесконечна и вправду
+            </p>
+            <p class="flex-ex__el">
+                то прямо следует из этого факта
+            </p>
+        </div>
+    </section>
+    
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Выйдут за пределы контейнера, но продолжат располагаться в один ряд.</p>
+        <br/>
+        <br/>
+        <div class="flex-ex">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+            <p class="flex-ex__el">
+                где-то сейчас происходят
+            </p>
+            <p class="flex-ex__el">
+                те же события
+            </p>
+            <p class="flex-ex__el">
+                копия меня пишет
+            </p>
+            <p class="flex-ex__el">
+                копию песни этой
+            </p>
+            <p class="flex-ex__el">
+                если вселенная бесконечна и вправду
+            </p>
+            <p class="flex-ex__el">
+                то прямо следует из этого факта
+            </p>
+            <p class="flex-ex__el">
+                Что ты точно так же ждёшь, когда я вернусь обратно
+            </p>
+            <p class="flex-ex__el">
+                Где-то там, в глуби далёких галактик
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Переносом элементов управляет свойство <span class="property">flex-wrap</span>, и по умолчанию перенос запрещён.</p>
+    </section>
+    
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">flex-wrap:
+            <select class="js-onselect" data-apply=".js-flex-wrap-apply" data-property="flex-wrap">
+                <option value="nowrap" selected>nowrap</option>
+                <option value="wrap">wrap</option>
+                <option value="wrap-reverse">wrap-reverse</option>
+            </select>
+        </span>
+        <br/>
+        <br/>
+        <div class="flex-ex js-flex-wrap-apply">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+            <p class="flex-ex__el">
+                где-то сейчас происходят
+            </p>
+            <p class="flex-ex__el">
+                те же события
+            </p>
+            <p class="flex-ex__el">
+                копия меня пишет
+            </p>
+            <p class="flex-ex__el">
+                копию песни этой
+            </p>
+            <p class="flex-ex__el">
+                если вселенная бесконечна и вправду
+            </p>
+            <p class="flex-ex__el">
+                то прямо следует из этого факта
+            </p>
+            <p class="flex-ex__el">
+                Что ты точно так же ждёшь, когда я вернусь обратно
+            </p>
+            <p class="flex-ex__el">
+                Где-то там, в глуби далёких галактик
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Можно комбинировать направление и перенос в свойстве <span class="property">flex-flow</span>.</p>
+
+        <pre>
+            <code><span class="rule">.container</span> <span class="punctuation">{</span></code>
+            <code><span class="property">  display</span><span><span class="punctuation">:</span> flex<span class="punctuation">;</span></code>
+            <code><span class="property">  flex-flow</span><span><span class="punctuation">:</span> row wrap<span class="punctuation">;</span></code>
+            <code><span class="punctuation">}</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Cвойство <span class="property">align-content</span> управляет распределением <mark>рядов</mark> флекс-элементов вдоль поперечной оси.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">align-content:
+            <select class="js-onselect" data-apply=".js-align-content-apply" data-property="align-content">
+                <option value="stretch" selected>stretch</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+            </select>
+        </span>
+        <br/>
+        <br/>
+        <div class="flex-ex js-align-content-apply" style="flex-wrap: wrap; height: 100%;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+            <p class="flex-ex__el">
+                где-то сейчас происходят
+            </p>
+            <p class="flex-ex__el">
+                те же события
+            </p>
+            <p class="flex-ex__el">
+                копия меня пишет
+            </p>
+            <p class="flex-ex__el">
+                копию песни этой
+            </p>
+            <p class="flex-ex__el">
+                если вселенная бесконечна и вправду
+            </p>
+            <p class="flex-ex__el">
+                то прямо следует из этого факта
+            </p>
+            <p class="flex-ex__el">
+                Что ты точно так же ждёшь, когда я вернусь обратно
+            </p>
+            <p class="flex-ex__el">
+                Где-то там, в глуби далёких галактик
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Если активно <span class="property">align-content</span>, то что с <span class="property">align-items</span>?</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">align-content:
+            <select class="js-onselect" data-apply=".js-align-content-apply" data-property="align-content">
+                <option value="stretch" selected>stretch</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+            </select>
+        </span>
+        <span class="property">align-items:
+            <select class="js-onselect" data-apply=".js-align-items-apply" data-property="align-items">
+                <option value="stretch" selected>stretch</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+            </select>
+        </span>
+        <br/>
+        <div class="flex-ex js-align-content-apply js-align-items-apply" style="flex-wrap: wrap; height: 100%;">
+            <p class="flex-ex__el">
+                если вселенная
+            </p>
+            <p class="flex-ex__el">
+                бесконечна действительно,
+            </p>
+            <p class="flex-ex__el">
+                значит есть куча
+            </p>
+            <p class="flex-ex__el">
+                копий нашей планеты
+            </p>
+            <p class="flex-ex__el">
+                где-то сейчас происходят
+            </p>
+            <p class="flex-ex__el">
+                те же события
+            </p>
+            <p class="flex-ex__el">
+                копия меня пишет
+            </p>
+            <p class="flex-ex__el">
+                копию песни этой
+            </p>
+            <p class="flex-ex__el">
+                если вселенная бесконечна и вправду
+            </p>
+            <p class="flex-ex__el">
+                то прямо следует из этого факта
+            </p>
+            <p class="flex-ex__el">
+                Что ты точно так же ждёшь, когда я вернусь обратно
+            </p>
+            <p class="flex-ex__el">
+                Где-то там, в глуби далёких галактик
+            </p>
+        </div>
+        <p class="next">Выравнивание элементов происходит внутри строки, если оно возможно.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>С помощью свойства <span class="property">order</span> можно менять порядок следования flex-элементов.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>0 - значение по-умолчанию</p>
+        <span class="property">order:
+            <select class="js-onselect" data-apply=".js-order" data-property="order">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="-1">-1</option>
+                <option value="1000">1000</option>
+            </select>
+        </span>
+        <br/>
+        <div class="flex-ex js-align-content-apply" style="min-height: auto;">
+            <p class="flex-ex__el">
+                0
+            </p>
+            <p class="flex-ex__el">
+                1
+            </p>
+            <p class="flex-ex__el">
+                2
+            </p>
+            <p class="flex-ex__el js-order" style="background: yellow;">
+                3
+            </p>
+            <p class="flex-ex__el">
+                4
+            </p>
+            <p class="flex-ex__el">
+                5
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Как указать размер флекс-элемента?</p>
+        <p>
+            Cвойство <span class="property">flex-basis</span> задает размер на главной оси.<br/><br/>
+            <small>
+                Имеет те же значения, что и <span class="property">width</span> / <span class="property">height</span>.<br/>
+                Если не указано, то базовый размер возьмется из ширины / высоты содержимого.
+            </small>
+        </p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span class="property">flex-basis: 50%</span>
+        <br/>
+        <div class="flex-ex" style="min-height: auto; margin-bottom: 20px;">
+            <p class="flex-ex__el" style="flex-basis: 50%;">
+                flex-basis: 50%
+            </p>
+            <p class="flex-ex__el">
+                flex-basis: auto
+            </p>
+        </div>
+        <div class="flex-ex" style="height: 150px; flex-direction: column;">
+            <p class="flex-ex__el" style="flex-basis: 50%;">
+                flex-basis: 50%
+            </p>
+            <p class="flex-ex__el">
+                flex-basis: auto
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Почему размер базовый?</p>
+        <p>Это исходный размер. Свободное место можно распределять в соответствии с коэффициентом жадности flex-элемента - <span class="property">flex-grow</span>.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">flex-grow: 0</span> // По-умолчанию </span>
+        <span class="property">flex-grow:
+            0 <input type="range" min="0" max="1" value="0" class="js-onselect" data-apply=".js-grow" data-property="flex-grow" /> 1
+        </span>
+        <span class="property">flex-grow:
+            0 <input type="range" min="0" max="2" value="0" class="js-onselect" data-apply=".js-grow2" data-property="flex-grow" /> 2
+        </span>
+        <br/>
+        <div class="flex-ex" style="min-height: auto; justify-content: center;">
+            <div class="flex-ex__el">
+                flex-grow: 0
+            </div>
+            <div class="flex-ex__el js-grow" style="text-align: center;">
+                <img class="image" height="50px" width="50px" style="transform: rotate(-90deg);" src="./pictures/spring.gif" />
+            </div>
+            <div class="flex-ex__el js-grow2" style="text-align: center;">
+                <img class="image" height="50px" width="50px" style="transform: rotate(-90deg);" src="./pictures/spring.gif" />
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Что, если сумма базовых размеров больше чем свободного места?</p>
+        <p>Будем делить отрицательное пространство в соответствии с коэффициентами сжатия - <span class="property">flex-shrink</span>.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <span><span class="property">flex-shrink: 1</span> // По-умолчанию </span>
+        <span class="property">flex-shrink:
+            0 <input type="range" min="0" max="1" value="0" class="js-onselect" data-apply=".js-shrink" data-property="flex-shrink" /> 1
+        </span>
+        <span class="property">flex-shrink:
+            0 <input type="range" min="0" max="2" value="0" class="js-onselect" data-apply=".js-shrink2" data-property="flex-shrink" /> 2
+        </span>
+        <br/>
+        <div class="flex-ex" style="min-height: auto; justify-content: center;">
+            <div class="flex-ex__el">
+                Сила упругости, возникающая в теле при его деформации, прямо пропорциональна величине этой деформации.
+            </div>
+            <div class="flex-ex__el js-shrink" style="text-align: center; flex-shrink: 0;">
+                .................. ................. ............. <img class="image" height="50px" width="50px" style="transform: rotate(-90deg);" src="./pictures/spring.gif" /> ................. .............. .................
+            </div>
+            <div class="flex-ex__el js-shrink2" style="text-align: center; flex-shrink: 0;">
+                ........................ ...................... .......... <img class="image" height="50px" width="50px" style="transform: rotate(-90deg);" src="./pictures/spring.gif" /> ............. ................... ........................
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p><a href="https://drafts.csswg.org/css-flexbox-1/#resolve-flexible-lengths" target="_blank">Алгоритм расчета</a></p>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p><pre><code><span class="property">flex: [flex-grow] [flex-shrink] [flex-basis];</span></code></pre></p>
+
+        <small>
+            <pre>
+                <code><span class="rule">.block__element</span> <span class="punctuation">{</span></code>
+                <code><span class="property">    flex: initial;</span> // = 0 1 auto — все по умолчанию</code>
+                <code><span class="property">    flex: auto;</span> // = 1 1 auto</code>
+                <code><span class="property">    flex: none;</span> // = 0 0 auto</code>
+                <code><span class="property">    flex: 2;</span> // число -> flex-grow -> = 2 1 auto</code>
+                <code><span class="property">    flex: 50%;</span> // единица измерения длины -> flex-basis = 50% -> = 0 1 50%</code>
+                <code><span class="property">    flex: 2 50%;</span> // flex-grow & flex-basis -> = 2 1 50%</code>
+                <code><span class="property">    flex: 2 0 50%;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+        </small>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>Особенности внешних отступов у элементов во flex-контейнере:</p>
+        <ul>
+            <li>не схлопываются</li>
+            <li>не выпадают</li>
+            <li>отступ с auto заберет все свободное место по своему направлению</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Flex</h2>
+        <p>А еще флексами можно просто выровнять элемент по-центру!</p>
+        
+        <div class="columns two">
+            <div>
+                <pre>
+                    <code><span class="rule">.block</span> <span class="punctuation">{</span></code>
+                    <code><span class="property">    display: flex;</span></code>
+                    <code><span class="punctuation">}</span></code>
+                    <code> </code>
+                    <code><span class="rule">.element</span> <span class="punctuation">{</span></code>
+                    <code><span class="property">    margin: auto;</span></code>
+                    <code><span class="punctuation">}</span></code>
+                </pre>
+            </div>
+            <div class="flex-ex" style="width: 100%; height: 200px;">
+                <p class="flex-ex__el" style="margin: auto;">Центр здесь!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Практика <span>flex</span></h2>
+    </section>
+
+    <section class="slide">
+        <img class="image image_centered" height="100%" src="./pictures/25-niga.jpg" />
+    </section>
+
+    <div class="progress"></div>
+
+	<script src="./shower.js"></script>
+</body>
+</html>
